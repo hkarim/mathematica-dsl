@@ -1,0 +1,12 @@
+A Mathematica DSL in Scala
+This is a simple internal domain-specific Mathematica like language for communicating with Mathematica
+
+- Mathematica must be installed on the machine where you build and run this DSL,
+  if you're using Maven, this install the JLink into your Maven repository:
+mvn install:install-file -DgroupId=com.wolfram.jlink -DartifactId=JLink -Dversion=4.4 -Dpackaging=jar -Dfile=JLink.jar
+
+- To run one of the samples without getting into native libraries configurations
+  or errors, add the JLink.jar manually to your classpath. I am using IDEA so, 
+  the samples should run once you configured the JLink path.
+
+- A symbol template is provided under etc for IDEA
