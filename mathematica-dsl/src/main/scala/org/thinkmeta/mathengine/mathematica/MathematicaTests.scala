@@ -46,6 +46,13 @@ object MathematicaTests {
      */
     val (a, b, c) = ('a, 'b, 'c)
 
+    /*
+    λx.x
+    λt.λf.t
+    λt.λf.f
+
+     */
+
     /*val result =
       Ξ(1, 2, 3) ⧸∙ Ξ(
         Ξ(a~, b~)     ⧴ (a+b),
@@ -145,13 +152,23 @@ object MathematicaTests {
     }
   }
 
+  def linearAlgebra() {
+    math {
+      implicit e ⇒ {
+        val scalar  = lst(1,2,3) ∙ lst(3,4,5)
+        println(scalar.evaluate) // -→ 26
+      }
+    }
+  }
+
 
   def main(args: Array[String]) {
     //renderSphericalPlot3D()
-    patterns()
+    //patterns()
     //someGraph()
     //pureFunction()
     //sphericalPlot2()
+    linearAlgebra()
   }
 
 }

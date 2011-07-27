@@ -14,7 +14,7 @@ import org.thinkmeta.mathengine._
 object Mathematica extends Core with Types with Structure with Trigonometry with Calculus with Graphics {
 
   implicit val mathematica =
-    new Object with Functional with OperandArithmatic with Logic with Graph /*with Evaluation*/
+    new Object with Functional with OperandArithmatic with Logic with Graph with LinearAlgebra/*with Evaluation*/
 
   implicit def asSymbolOps(value: Symbol) = new MExpression(SymbolNode(value.name))
   implicit def asSymbol(value: Symbol) = SymbolNode(value.name)
@@ -146,7 +146,7 @@ object Mathematica extends Core with Types with Structure with Trigonometry with
     def unary_- (implicit arithmatic: Arithmatic[Operand]) = arithmatic.unary_-(operand)
 
     def *(rhs: Operand)(implicit arithmatic: Arithmatic[Operand]) = arithmatic.*(operand)(rhs)
-    def ∙(rhs: Operand)(implicit arithmatic: Arithmatic[Operand]) = arithmatic.*(operand)(rhs)
+    //def ∙(rhs: Operand)(implicit arithmatic: Arithmatic[Operand]) = arithmatic.*(operand)(rhs)
 
     def /(rhs: Operand)(implicit arithmatic: Arithmatic[Operand]) = arithmatic./(operand)(rhs)
 
@@ -179,6 +179,10 @@ object Mathematica extends Core with Types with Structure with Trigonometry with
 
     def ●-►(rhs: Operand)(implicit graph: Graph) =
       graph.●-►(operand, rhs)
+
+
+    def ∙(rhs: Operand)(implicit linearAlgebra: LinearAlgebra) = linearAlgebra.dot(operand, rhs)
+
 
     // Evaluation
     def expression(implicit evaluation: Evaluation) = evaluation.expression(operand)
